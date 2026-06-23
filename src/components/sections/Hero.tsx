@@ -21,7 +21,7 @@ export function Hero() {
           <div className="hero-actions">
             <a href="/projects" className="btn btn-primary">View Work</a>
             <a href="#contact" className="btn btn-outline">Get in Touch</a>
-            <a href="#" className="btn btn-outline-accent">Resume</a>
+            <a href="/resume.pdf" className="btn btn-outline-accent" target="_blank" rel="noopener noreferrer">Resume</a>
           </div>
         </div>
       </div>
