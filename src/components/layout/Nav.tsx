@@ -1,23 +1,49 @@
 import { useState, useEffect } from 'react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useActiveSection } from '../../hooks/useActiveSection'
+import { useNavScroll } from '../../hooks/useNavScroll'
 import { NAV_LINKS } from '../../data/content'
 
 export function Nav() {
   const [open, setOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
+  const scrolled = useNavScroll()
   const activeSection = useActiveSection()
+  const { pathname, hash } = useLocation()
+  const navigate = useNavigate()
 
   useEffect(() => {
-    function onScroll() {
-      setScrolled(window.scrollY > 40)
+    if (hash && pathname === '/') {
+      const id = hash.slice(1)
+      setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+      }, 100)
     }
-    window.addEventListener('scroll', onScroll, { passive: true })
-    onScroll()
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+  }, [hash, pathname])
 
   function close() {
     setOpen(false)
+  }
+
+  function handleClick(href: string) {
+    close()
+    if (href.startsWith('#')) {
+      if (pathname === '/') {
+        const id = href.slice(1)
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+      } else {
+        navigate('/' + href)
+      }
+    }
+  }
+
+  function isActive(link: { href: string }) {
+    if (link.href.startsWith('/')) {
+      return pathname === link.href
+    }
+    if (link.href.startsWith('#')) {
+      return activeSection === link.href.slice(1)
+    }
+    return false
   }
 
   return (
@@ -29,20 +55,31 @@ export function Nav() {
       <div className={`nav-overlay${open ? ' open' : ''}`} onClick={close} aria-hidden="true" />
 
       <div className="nav-inner">
-        <a href="#hero" className="nav-logo" onClick={close}>
+        <Link to="/" className="nav-logo" onClick={close}>
           b<span>_</span>mehto
-        </a>
+        </Link>
 
         <div className={`nav-links${open ? ' open' : ''}`}>
           {NAV_LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className={activeSection === link.href.slice(1) ? 'active' : ''}
-              onClick={close}
-            >
-              {link.label}
-            </a>
+            link.href.startsWith('/') ? (
+              <Link
+                key={link.href}
+                to={link.href}
+                className={isActive(link) ? 'active' : ''}
+                onClick={close}
+              >
+                {link.label}
+              </Link>
+            ) : (
+              <a
+                key={link.href}
+                href={link.href}
+                className={isActive(link) ? 'active' : ''}
+                onClick={(e) => { e.preventDefault(); handleClick(link.href) }}
+              >
+                {link.label}
+              </a>
+            )
           ))}
         </div>
 

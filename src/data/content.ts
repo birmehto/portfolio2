@@ -1,10 +1,8 @@
-import type { Skill, Project, Experience, Stat, ContactLink, WidgetCard, NavLink } from '../types'
+import type { Skill, Project, Stat, ContactLink, WidgetCard, NavLink } from '../types'
 
 export const NAV_LINKS: NavLink[] = [
   { label: 'About', href: '#about' },
   { label: 'Skills', href: '#skills' },
-  { label: 'Work', href: '#projects' },
-  { label: 'Experience', href: '#experience' },
   { label: 'Contact', href: '#contact' },
 ]
 
@@ -41,76 +39,100 @@ export const SKILLS: Skill[] = [
 
 export const PROJECTS: Project[] = [
   {
-    id: 'flowpay',
-    title: 'FlowPay',
-    description: 'A fintech app for peer-to-peer payments with real-time transaction tracking, biometric auth, and an animated expense breakdown UI.',
-    icon: '\uD83D\uDCB3',
+    id: 'lotus-digital-media',
+    title: 'Lotus Digital Media',
+    description: 'A digital signage platform for restaurants to manage and display dynamic ads, promotions, and menu content on TV screens in real time.',
+    icon: '\uD83D\uDCFA',
     tags: [
       { label: 'Flutter', variant: 'default' },
       { label: 'Firebase', variant: 'green' },
       { label: 'Riverpod', variant: 'purple' },
     ],
     links: [
-      { label: 'Live \u2192', url: '#' },
-      { label: 'Source \u2192', url: '#' },
+      { label: 'Play Store \u2192', url: 'https://play.google.com/store/apps/details?id=com.lotus.digitalmedia' },
+      { label: 'Website \u2192', url: 'https://lotusdm.com' },
     ],
+    details: 'Lotus Digital Media revolutionizes restaurant advertising by enabling dynamic content display directly on TV screens. Built with Flutter, the app lets restaurant owners manage, update, and schedule promotions, videos, and animations in real time through an easy-to-use web dashboard. From daily specials to seasonal offers, the platform makes digital signage effortless and effective.',
+    features: [
+      'Real-time content management via web dashboard',
+      'Dynamic video, animation, and promotion display',
+      'Custom scheduling for time-specific promotions',
+      'Remote management across multiple screens',
+      'Analytics and engagement tracking',
+    ],
+    tech: ['Flutter', 'Dart', 'Firebase', 'Cloud Firestore', 'Riverpod', 'REST API'],
   },
   {
-    id: 'greenscape',
-    title: 'GreenScape',
-    description: 'A plant care companion with AI-powered diagnosis, custom watering schedules, and a community feed. Used by 10K+ gardeners.',
-    icon: '\uD83C\uDF3F',
-    tags: [
-      { label: 'Flutter', variant: 'purple' },
-      { label: 'Supabase', variant: 'orange' },
-      { label: 'Bloc', variant: 'default' },
-    ],
-    links: [
-      { label: 'Live \u2192', url: '#' },
-      { label: 'Source \u2192', url: '#' },
-    ],
-  },
-  {
-    id: 'coachpro',
-    title: 'CoachPro',
-    description: 'A fitness coaching platform connecting trainers with clients, featuring live workout tracking, video calls, and progress analytics.',
-    icon: '\uD83C\uDFCB\uFE0F',
+    id: 'oswal-solar-pump',
+    title: 'Oswal Solar Pump',
+    description: 'A comprehensive mobile solution for solar water pump management, monitoring, and service tracking across agricultural installations.',
+    icon: '\u2600\uFE0F',
     tags: [
       { label: 'Flutter', variant: 'default' },
-      { label: 'Firebase', variant: 'green' },
-      { label: 'GetX', variant: 'purple' },
+      { label: 'IoT', variant: 'orange' },
+      { label: 'Bloc', variant: 'purple' },
     ],
     links: [
-      { label: 'Live \u2192', url: '#' },
-      { label: 'Source \u2192', url: '#' },
+      { label: 'Website \u2192', url: 'https://oswalpumps.com' },
+      { label: 'Dribbble \u2192', url: 'https://dribbble.com/iPOPSolutions' },
     ],
-  },
-]
-
-export const EXPERIENCES: Experience[] = [
-  {
-    id: 'senior-techcorp',
-    date: '2023 \u2014 Present',
-    role: 'Senior Flutter Developer',
-    company: 'TechCorp',
-    location: 'Remote',
-    description: 'Leading a team of 4 building a cross-platform B2B SaaS app. Migrated the codebase from Provider to Riverpod, cutting widget rebuilds by 40%. Designed a reusable component library used across 3 products.',
+    details: 'Oswal Solar Pump provides farmers and field technicians with real-time monitoring of solar water pumping systems. The app enables remote diagnostics, performance tracking, and maintenance scheduling for thousands of off-grid solar pump installations under the PM-KUSUM scheme. It helps reduce downtime and optimize irrigation across large agricultural networks.',
+    features: [
+      'Real-time pump monitoring and performance analytics',
+      'Remote diagnostics and fault detection',
+      'Installation tracking and maintenance scheduling',
+      'GPS-based field technician coordination',
+      'Offline mode for rural areas with low connectivity',
+    ],
+    tech: ['Flutter', 'Dart', 'IoT Integration', 'Bloc', 'GPS Services', 'REST API'],
   },
   {
-    id: 'dev-appworks',
-    date: '2021 \u2014 2023',
-    role: 'Flutter Developer',
-    company: 'AppWorks',
-    location: 'San Francisco',
-    description: 'Built features for a consumer social app with 500K+ MAU. Implemented custom animated transitions and real-time chat with Firebase. Reduced crash rate by 60% through systematic error handling.',
+    id: 'tracktide',
+    title: 'Track Tide',
+    description: 'A workforce management app for tracking work hours, leave requests, attendance, and GPS-verified check-ins with automated reporting.',
+    icon: '\uD83D\uDCCB',
+    tags: [
+      { label: 'Flutter', variant: 'purple' },
+      { label: 'Firebase', variant: 'green' },
+      { label: 'Riverpod', variant: 'default' },
+    ],
+    links: [
+      { label: 'Play Store \u2192', url: 'https://play.google.com/store/apps/details?id=com.ipop.tracktide' },
+      { label: 'Dribbble \u2192', url: 'https://dribbble.com/shots/25502147-Track-Tide-Work-Hours-Leave-Management-Mobile-App' },
+    ],
+    details: 'Track Tide is the ultimate workforce management solution for employee time tracking and attendance. It enables businesses to monitor clock-ins with GPS location verification, manage leave requests, track overtime, and generate comprehensive annual work summaries. Designed for both remote teams and field staff, Track Tide streamlines payroll processing and boosts operational efficiency.',
+    features: [
+      'GPS-verified clock-in and clock-out tracking',
+      'Leave management with balance tracking',
+      'Overtime calculation and reporting',
+      'Annual work summary with hours and attendance',
+      'Real-time workforce dashboard for managers',
+    ],
+    tech: ['Flutter', 'Dart', 'Firebase', 'Riverpod', 'GPS Services', 'Google Maps'],
   },
   {
-    id: 'junior-codebase',
-    date: '2020 \u2014 2021',
-    role: 'Junior Developer',
-    company: 'CodeBase',
-    location: 'New York',
-    description: 'Started my Flutter journey building internal tools and client prototypes. Published the company\u2019s first Flutter package on pub.dev. Contributed to migrating a legacy native app to Flutter.',
+    id: 'hni360',
+    title: 'HNI360',
+    description: 'A business productivity platform for ticket management, team collaboration, and streamlined workflow tracking across organizations.',
+    icon: '\uD83C\uDF10',
+    tags: [
+      { label: 'Flutter', variant: 'orange' },
+      { label: 'REST API', variant: 'default' },
+      { label: 'Bloc', variant: 'purple' },
+    ],
+    links: [
+      { label: 'Play Store \u2192', url: 'https://play.google.com/store/apps/details?id=com.ipopsolutions.hni360' },
+      { label: 'Support \u2192', url: 'mailto:info@hni360.com' },
+    ],
+    details: 'HNI360 is a business productivity app designed to simplify ticket management and streamline daily operations. It provides teams with a clean, efficient interface for managing support requests, tracking progress, and staying organized. With secure authentication, a centralized dashboard, and detailed ticket tracking, HNI360 helps businesses manage workflows more effectively and improve visibility across all tasks.',
+    features: [
+      'Secure user authentication and role-based access',
+      'Centralized dashboard for key metrics and updates',
+      'Ticket creation, assignment, and priority tracking',
+      'Real-time status updates and notifications',
+      'Performance analytics and reporting',
+    ],
+    tech: ['Flutter', 'Dart', 'REST API', 'Bloc', 'Push Notifications', 'Secure Storage'],
   },
 ]
 

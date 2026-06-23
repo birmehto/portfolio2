@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 
-export function useScrollReveal<T extends HTMLElement>() {
+export function useScrollReveal<T extends HTMLElement>(revealChildren = false) {
   const ref = useRef<T>(null)
 
   useEffect(() => {
@@ -10,6 +10,9 @@ export function useScrollReveal<T extends HTMLElement>() {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
+          if (revealChildren) {
+            el.querySelectorAll('.reveal').forEach(child => child.classList.add('visible'))
+          }
           el.classList.add('visible')
           observer.unobserve(el)
         }
@@ -19,7 +22,7 @@ export function useScrollReveal<T extends HTMLElement>() {
 
     observer.observe(el)
     return () => observer.disconnect()
-  }, [])
+  }, [revealChildren])
 
   return ref
 }

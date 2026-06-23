@@ -16,17 +16,12 @@ export interface Project {
   title: string
   description: string
   icon: string
+  image?: string
   tags: ProjectTag[]
   links: { label: string; url: string }[]
-}
-
-export interface Experience {
-  id: string
-  date: string
-  role: string
-  company: string
-  location: string
-  description: string
+  details?: string
+  features?: string[]
+  tech?: string[]
 }
 
 export interface Stat {

@@ -1,7 +1,8 @@
 import type { ReactNode } from 'react'
+import { useScrollReveal } from '../../hooks/useScrollReveal'
 
 interface SectionProps {
-  id: string
+  id?: string
   label: string
   title?: string
   description?: string
@@ -10,10 +11,12 @@ interface SectionProps {
 }
 
 export function Section({ id, label, title, description, children, className = '' }: SectionProps) {
+  const headerRef = useScrollReveal<HTMLDivElement>(true)
+
   return (
-    <section className={`section${className ? ` ${className}` : ''}`} id={id}>
+    <section className={`section${className ? ` ${className}` : ''}`} {...(id ? { id } : {})}>
       <div className="container">
-        <div className="section-header">
+        <div className="section-header" ref={headerRef}>
           <span className="section-label">{label}</span>
           {title && <h2 className="section-title reveal">{title}</h2>}
           {description && <p className="section-desc reveal">{description}</p>}
