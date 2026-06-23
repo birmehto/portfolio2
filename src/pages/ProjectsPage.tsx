@@ -15,6 +15,10 @@ const BANNER_GRADIENTS: Record<string, string> = {
   'oswal-solar-pump': 'linear-gradient(135deg, #1b4332 0%, #2d6a4f 50%, #40916c 100%)',
   tracktide: 'linear-gradient(135deg, #240046 0%, #3c096c 50%, #5a189a 100%)',
   hni360: 'linear-gradient(135deg, #370617 0%, #6a040f 50%, #9d0208 100%)',
+  'aps-solar-pump': 'linear-gradient(135deg, #1b4332 0%, #2d6a4f 50%, #40916c 100%)',
+  dynamech: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)',
+  'susieq-customer': 'linear-gradient(135deg, #4a0e4e 0%, #7b2d8e 50%, #a855f7 100%)',
+  'susieq-branch': 'linear-gradient(135deg, #78350f 0%, #92400e 50%, #d97706 100%)',
 }
 
 function ProjectCard({ project, index }: { project: typeof PROJECTS[number]; index: number }) {

@@ -19,8 +19,8 @@ export const WIDGET_CARDS: WidgetCard[] = [
 
 export const STATS: Stat[] = [
   { number: '2+', label: 'years with Flutter' },
-  { number: '20+', label: 'apps shipped' },
-  { number: '12', label: 'open-source packages' },
+  { number: '16+', label: 'apps shipped' },
+  { number: '2', label: 'open-source packages' },
   { number: '8', label: 'clients worked with' },
 ]
 
@@ -94,6 +94,62 @@ export const PROJECTS: Project[] = [
     links: [
       { label: 'Play Store', url: 'https://play.google.com/store/apps/details?id=com.ipop.tracktide' },
       { label: 'App Store', url: 'https://apps.apple.com/in/app/track-tide/id6761369755' },
+    ],
+  },
+  {
+    id: 'aps-solar-pump',
+    title: 'APS Solar Pump',
+    description: 'An app for solar pump companies to streamline and manage solar pump installations in residential homes with engineer tracking and client management.',
+    icon: '\u2600\uFE0F',
+    tags: [
+      { label: 'Flutter', variant: 'default' },
+      { label: 'IoT', variant: 'orange' },
+      { label: 'Bloc', variant: 'purple' },
+    ],
+    links: [
+      { label: 'Play Store', url: 'https://play.google.com/store/apps/details?id=com.aps.apssolarpump&hl=en' },
+    ],
+  },
+  {
+    id: 'dynamech',
+    title: 'Dynamech',
+    description: 'A comprehensive mechanical asset management and maintenance solution for tracking equipment, scheduling maintenance, and managing documentation.',
+    icon: '\u2699\uFE0F',
+    tags: [
+      { label: 'Flutter', variant: 'orange' },
+      { label: 'REST API', variant: 'default' },
+      { label: 'Firebase', variant: 'green' },
+    ],
+    links: [
+      { label: 'Play Store', url: 'https://play.google.com/store/apps/details?id=com.app.dynamech&hl=en' },
+    ],
+  },
+  {
+    id: 'susieq-customer',
+    title: 'SusieQ 105 Customer',
+    description: 'A smart food ordering and pickup companion — browse menus, customize meals, place orders, and schedule pickups from your favorite restaurants.',
+    icon: '\uD83C\uDF54',
+    tags: [
+      { label: 'Flutter', variant: 'default' },
+      { label: 'Firebase', variant: 'green' },
+      { label: 'Riverpod', variant: 'purple' },
+    ],
+    links: [
+      { label: 'Play Store', url: 'https://play.google.com/store/apps/details?id=com.susieq105.customer&hl=en' },
+    ],
+  },
+  {
+    id: 'susieq-branch',
+    title: 'SusieQ 105 Branch',
+    description: 'An operations app for staff and managers at SusieQ to manage live orders, track customer details, process customizations, and print thermal receipts.',
+    icon: '\uD83C\uDFEA',
+    tags: [
+      { label: 'Flutter', variant: 'purple' },
+      { label: 'Firebase', variant: 'green' },
+      { label: 'REST API', variant: 'default' },
+    ],
+    links: [
+      { label: 'Play Store', url: 'https://play.google.com/store/apps/details?id=com.susieq105.branch&hl=en' },
     ],
   },
 ]
