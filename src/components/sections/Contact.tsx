@@ -1,4 +1,5 @@
-import type { ReactNode } from 'react'
+import { useEffect, useRef, useState, type ReactNode } from 'react'
+import { useForm } from '@formspree/react'
 import { Section } from '../ui/Section'
 import { CONTACT_LINKS } from '../../data/content'
 import { useScrollReveal } from '../../hooks/useScrollReveal'
@@ -33,9 +34,32 @@ function SocialIcon({ href }: { href: string }): ReactNode {
   )
 }
 
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/your_form_id'
+const FORMSPREE_ID = 'mkolgkpb'
 
 export function Contact() {
+  const [state, formspreeSubmit] = useForm(FORMSPREE_ID)
+  const [feedback, setFeedback] = useState<'idle' | 'sent' | 'error'>('idle')
+  const formRef = useRef<HTMLFormElement>(null)
+  const submitted = useRef(false)
+
+  useEffect(() => {
+    if (!submitted.current) return
+    if (state.succeeded) {
+      setFeedback('sent')
+      formRef.current?.reset()
+      formRef.current?.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('input, textarea').forEach((f) => f.classList.remove('filled'))
+      setTimeout(() => { setFeedback('idle'); submitted.current = false }, 3000)
+    } else if (state.errors) {
+      setFeedback('error')
+      setTimeout(() => { setFeedback('idle'); submitted.current = false }, 3000)
+    }
+  }, [state.succeeded, state.errors])
+
+  function handleInput(e: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>) {
+    const el = e.currentTarget
+    el.classList.toggle('filled', el.value.trim().length > 0)
+  }
+
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     const form = e.currentTarget
@@ -52,45 +76,18 @@ export function Contact() {
 
     if (!valid) return
 
-    const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement
-    const orig = btn.textContent!
-    btn.textContent = 'Sending...'
-    btn.disabled = true
-
-    try {
-      const res = await fetch(FORMSPREE_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: name.value, email: email.value, message: message.value }),
-      })
-
-      if (!res.ok) throw new Error('Failed to send')
-
-      btn.textContent = '\u2713 Sent!'
-      btn.style.background = '#34D399'
-      btn.style.color = '#080C18'
-      form.reset()
-      ;[name, email, message].forEach((f) => f.classList.remove('filled'))
-    } catch {
-      btn.textContent = '\u2717 Failed'
-      btn.style.background = '#EF4444'
-      btn.style.color = '#fff'
-    }
-
-    setTimeout(() => {
-      btn.textContent = orig
-      btn.style.background = ''
-      btn.style.color = ''
-      btn.disabled = false
-    }, 3000)
-  }
-
-  function handleInput(e: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>) {
-    const el = e.currentTarget
-    el.classList.toggle('filled', el.value.trim().length > 0)
+    submitted.current = true
+    await formspreeSubmit(e)
   }
 
   const gridRef = useScrollReveal<HTMLDivElement>(true)
+
+  const btnText = state.submitting ? 'Sending...' : feedback === 'sent' ? '\u2713 Sent!' : feedback === 'error' ? '\u2717 Failed' : 'Send Message \u2192'
+  const btnStyle: React.CSSProperties = {
+    alignSelf: 'flex-start',
+    ...(feedback === 'sent' ? { background: '#34D399', color: '#080C18' } : {}),
+    ...(feedback === 'error' ? { background: '#EF4444', color: '#fff' } : {}),
+  }
 
   return (
     <Section
@@ -100,7 +97,7 @@ export function Contact() {
       description="Have a project in mind or just want to say hi? Drop me a message."
     >
       <div className="contact-grid" ref={gridRef}>
-        <form className="contact-form reveal" onSubmit={handleSubmit} noValidate>
+        <form className="contact-form reveal" onSubmit={handleSubmit} noValidate ref={formRef}>
           <div className="form-group">
             <label htmlFor="formName">Name</label>
             <input type="text" id="formName" name="name" placeholder="Your name" required autoComplete="name" onInput={handleInput} />
@@ -111,10 +108,10 @@ export function Contact() {
           </div>
           <div className="form-group">
             <label htmlFor="formMessage">Message</label>
-            <textarea id="formMessage" name="message" placeholder="Tell me about your project..." required onInput={handleInput}></textarea>
+            <textarea id="formMessage" name="message" placeholder="Tell me about your project..." required onInput={handleInput} />
           </div>
-          <button type="submit" className="btn btn-primary" style={{ alignSelf: 'flex-start' }}>
-            Send Message &rarr;
+          <button type="submit" className="btn btn-primary" style={btnStyle} disabled={state.submitting}>
+            {btnText}
           </button>
         </form>
         <div className="contact-info reveal">
