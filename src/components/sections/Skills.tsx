@@ -24,7 +24,7 @@ export function Skills() {
   return (
     <Section
       id="skills"
-      label="02 / Skills"
+      label="#skills"
       title="Technologies I work with"
       description="From framework fundamentals to production tooling &mdash; here&rsquo;s what I bring to the table."
     >

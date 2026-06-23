@@ -19,9 +19,6 @@ export interface Project {
   image?: string
   tags: ProjectTag[]
   links: { label: string; url: string }[]
-  details?: string
-  features?: string[]
-  tech?: string[]
 }
 
 export interface Stat {

@@ -33,8 +33,10 @@ function SocialIcon({ href }: { href: string }): ReactNode {
   )
 }
 
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/your_form_id'
+
 export function Contact() {
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     const form = e.currentTarget
     const name = form.elements.namedItem('name') as HTMLInputElement
@@ -55,19 +57,32 @@ export function Contact() {
     btn.textContent = 'Sending...'
     btn.disabled = true
 
-    setTimeout(() => {
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: name.value, email: email.value, message: message.value }),
+      })
+
+      if (!res.ok) throw new Error('Failed to send')
+
       btn.textContent = '\u2713 Sent!'
       btn.style.background = '#34D399'
       btn.style.color = '#080C18'
       form.reset()
       ;[name, email, message].forEach((f) => f.classList.remove('filled'))
-      setTimeout(() => {
-        btn.textContent = orig
-        btn.style.background = ''
-        btn.style.color = ''
-        btn.disabled = false
-      }, 2000)
-    }, 1200)
+    } catch {
+      btn.textContent = '\u2717 Failed'
+      btn.style.background = '#EF4444'
+      btn.style.color = '#fff'
+    }
+
+    setTimeout(() => {
+      btn.textContent = orig
+      btn.style.background = ''
+      btn.style.color = ''
+      btn.disabled = false
+    }, 3000)
   }
 
   function handleInput(e: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>) {
@@ -80,7 +95,7 @@ export function Contact() {
   return (
     <Section
       id="contact"
-      label="03 / Contact"
+      label="#contact"
       title="Let&rsquo;s build something"
       description="Have a project in mind or just want to say hi? Drop me a message."
     >

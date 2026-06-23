@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { PROJECTS } from '../data/content'
 import { TiltCard } from '../components/ui/TiltCard'
@@ -39,39 +39,40 @@ function ProjectCard({ project, index }: { project: typeof PROJECTS[number]; ind
 
   return (
     <div ref={ref} className="project-wrapper reveal">
-      <Link to={`/projects/${project.id}`} className="project-card-link">
-        <TiltCard className="project-card" maxTilt={6}>
-          <div
-            className="project-preview"
-            style={project.image ? {} : { background: BANNER_GRADIENTS[project.id] }}
-          >
-            {project.image ? (
-              <img src={project.image} alt={project.title} className="project-banner" />
-            ) : (
-              <>
-                <div className="preview-bg" />
-                <span className="preview-icon">{project.icon}</span>
-              </>
-            )}
+      <TiltCard className="project-card" maxTilt={6}>
+        <div
+          className="project-preview"
+          style={project.image ? {} : { background: BANNER_GRADIENTS[project.id] }}
+        >
+          {project.image ? (
+            <img src={project.image} alt={project.title} className="project-banner" />
+          ) : (
+            <>
+              <div className="preview-bg" />
+              <span className="preview-icon">{project.icon}</span>
+            </>
+          )}
+        </div>
+        <div className="project-body">
+          <div className="project-tags">
+            {project.tags.map((tag) => (
+              <span key={tag.label} className={TAG_CLASSES[tag.variant]}>
+                {tag.label}
+              </span>
+            ))}
           </div>
-          <div className="project-body">
-            <div className="project-tags">
-              {project.tags.map((tag) => (
-                <span key={tag.label} className={TAG_CLASSES[tag.variant]}>
-                  {tag.label}
-                </span>
-              ))}
-            </div>
-            <h3 className="project-title">{project.title}</h3>
-            <p className="project-desc">{project.description}</p>
-            <div className="project-links">
-              {project.links.map((link) => (
-                <a key={link.label} href={link.url} onClick={(e) => e.stopPropagation()}>{link.label}</a>
-              ))}
-            </div>
+          <h3 className="project-title">{project.title}</h3>
+          <p className="project-desc">{project.description}</p>
+          <div className="project-links">
+            {project.links.map((link) => (
+              <a key={link.label} href={link.url} target="_blank" rel="noopener noreferrer">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M3 5v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2zm16 14H5V5h14v14z"/><path d="M12 7l-5 5h4v5h2v-5h4l-5-5z"/></svg>
+                {link.label}
+              </a>
+            ))}
           </div>
-        </TiltCard>
-      </Link>
+        </div>
+      </TiltCard>
     </div>
   )
 }

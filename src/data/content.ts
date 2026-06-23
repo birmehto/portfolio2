@@ -1,4 +1,4 @@
-import type { Skill, Project, Stat, ContactLink, WidgetCard, NavLink } from '../types'
+import type { ContactLink, NavLink, Project, Skill, Stat, WidgetCard } from '../types'
 
 export const NAV_LINKS: NavLink[] = [
   { label: 'About', href: '#about' },
@@ -18,7 +18,7 @@ export const WIDGET_CARDS: WidgetCard[] = [
 ]
 
 export const STATS: Stat[] = [
-  { number: '5+', label: 'years of Flutter' },
+  { number: '2+', label: 'years with Flutter' },
   { number: '20+', label: 'apps shipped' },
   { number: '12', label: 'open-source packages' },
   { number: '8', label: 'clients worked with' },
@@ -39,6 +39,21 @@ export const SKILLS: Skill[] = [
 
 export const PROJECTS: Project[] = [
   {
+    id: 'hni360',
+    title: 'HNI360',
+    description: 'A business productivity platform for ticket management, team collaboration, and streamlined workflow tracking across organizations.',
+    icon: '\uD83C\uDF10',
+    tags: [
+      { label: 'Flutter', variant: 'orange' },
+      { label: 'REST API', variant: 'default' },
+      { label: 'Bloc', variant: 'purple' },
+    ],
+    links: [
+      { label: 'Play Store', url: 'https://play.google.com/store/apps/details?id=com.ipopsolutions.hni360' },
+      { label: 'App Store', url: 'https://apps.apple.com/in/app/hni360/id6761290498' },
+    ],
+  },
+  {
     id: 'lotus-digital-media',
     title: 'Lotus Digital Media',
     description: 'A digital signage platform for restaurants to manage and display dynamic ads, promotions, and menu content on TV screens in real time.',
@@ -49,18 +64,8 @@ export const PROJECTS: Project[] = [
       { label: 'Riverpod', variant: 'purple' },
     ],
     links: [
-      { label: 'Play Store \u2192', url: 'https://play.google.com/store/apps/details?id=com.lotus.digitalmedia' },
-      { label: 'Website \u2192', url: 'https://lotusdm.com' },
+      { label: 'Play Store', url: 'https://play.google.com/store/apps/details?id=com.lotus.digitalmedia' },
     ],
-    details: 'Lotus Digital Media revolutionizes restaurant advertising by enabling dynamic content display directly on TV screens. Built with Flutter, the app lets restaurant owners manage, update, and schedule promotions, videos, and animations in real time through an easy-to-use web dashboard. From daily specials to seasonal offers, the platform makes digital signage effortless and effective.',
-    features: [
-      'Real-time content management via web dashboard',
-      'Dynamic video, animation, and promotion display',
-      'Custom scheduling for time-specific promotions',
-      'Remote management across multiple screens',
-      'Analytics and engagement tracking',
-    ],
-    tech: ['Flutter', 'Dart', 'Firebase', 'Cloud Firestore', 'Riverpod', 'REST API'],
   },
   {
     id: 'oswal-solar-pump',
@@ -73,18 +78,8 @@ export const PROJECTS: Project[] = [
       { label: 'Bloc', variant: 'purple' },
     ],
     links: [
-      { label: 'Website \u2192', url: 'https://oswalpumps.com' },
-      { label: 'Dribbble \u2192', url: 'https://dribbble.com/iPOPSolutions' },
+      { label: 'Play Store', url: 'https://play.google.com/store/apps/details?id=com.solar.oswal' },
     ],
-    details: 'Oswal Solar Pump provides farmers and field technicians with real-time monitoring of solar water pumping systems. The app enables remote diagnostics, performance tracking, and maintenance scheduling for thousands of off-grid solar pump installations under the PM-KUSUM scheme. It helps reduce downtime and optimize irrigation across large agricultural networks.',
-    features: [
-      'Real-time pump monitoring and performance analytics',
-      'Remote diagnostics and fault detection',
-      'Installation tracking and maintenance scheduling',
-      'GPS-based field technician coordination',
-      'Offline mode for rural areas with low connectivity',
-    ],
-    tech: ['Flutter', 'Dart', 'IoT Integration', 'Bloc', 'GPS Services', 'REST API'],
   },
   {
     id: 'tracktide',
@@ -97,48 +92,15 @@ export const PROJECTS: Project[] = [
       { label: 'Riverpod', variant: 'default' },
     ],
     links: [
-      { label: 'Play Store \u2192', url: 'https://play.google.com/store/apps/details?id=com.ipop.tracktide' },
-      { label: 'Dribbble \u2192', url: 'https://dribbble.com/shots/25502147-Track-Tide-Work-Hours-Leave-Management-Mobile-App' },
+      { label: 'Play Store', url: 'https://play.google.com/store/apps/details?id=com.ipop.tracktide' },
+      { label: 'App Store', url: 'https://apps.apple.com/in/app/track-tide/id6761369755' },
     ],
-    details: 'Track Tide is the ultimate workforce management solution for employee time tracking and attendance. It enables businesses to monitor clock-ins with GPS location verification, manage leave requests, track overtime, and generate comprehensive annual work summaries. Designed for both remote teams and field staff, Track Tide streamlines payroll processing and boosts operational efficiency.',
-    features: [
-      'GPS-verified clock-in and clock-out tracking',
-      'Leave management with balance tracking',
-      'Overtime calculation and reporting',
-      'Annual work summary with hours and attendance',
-      'Real-time workforce dashboard for managers',
-    ],
-    tech: ['Flutter', 'Dart', 'Firebase', 'Riverpod', 'GPS Services', 'Google Maps'],
-  },
-  {
-    id: 'hni360',
-    title: 'HNI360',
-    description: 'A business productivity platform for ticket management, team collaboration, and streamlined workflow tracking across organizations.',
-    icon: '\uD83C\uDF10',
-    tags: [
-      { label: 'Flutter', variant: 'orange' },
-      { label: 'REST API', variant: 'default' },
-      { label: 'Bloc', variant: 'purple' },
-    ],
-    links: [
-      { label: 'Play Store \u2192', url: 'https://play.google.com/store/apps/details?id=com.ipopsolutions.hni360' },
-      { label: 'Support \u2192', url: 'mailto:info@hni360.com' },
-    ],
-    details: 'HNI360 is a business productivity app designed to simplify ticket management and streamline daily operations. It provides teams with a clean, efficient interface for managing support requests, tracking progress, and staying organized. With secure authentication, a centralized dashboard, and detailed ticket tracking, HNI360 helps businesses manage workflows more effectively and improve visibility across all tasks.',
-    features: [
-      'Secure user authentication and role-based access',
-      'Centralized dashboard for key metrics and updates',
-      'Ticket creation, assignment, and priority tracking',
-      'Real-time status updates and notifications',
-      'Performance analytics and reporting',
-    ],
-    tech: ['Flutter', 'Dart', 'REST API', 'Bloc', 'Push Notifications', 'Secure Storage'],
   },
 ]
 
 export const CONTACT_LINKS: ContactLink[] = [
-  { icon: '\u2709', label: 'bir@mehto.dev', href: 'mailto:bir@mehto.dev' },
-  { icon: '\u2328', label: 'github.com/birmehto', href: 'https://github.com' },
-  { icon: '\uD83D\uDD17', label: 'linkedin.com/in/birmehto', href: 'https://linkedin.com' },
-  { icon: '\uD835\uDDD8', label: '@birmehto', href: 'https://twitter.com' },
+  { icon: '\u2709', label: 'birmehto@gmail.com', href: 'mailto:birmehto@gmail.com' },
+  { icon: '\u2328', label: 'github.com/birmehto', href: 'https://github.com/birmehto' },
+  { icon: '\uD83D\uDD17', label: 'linkedin.com/in/birmehto', href: 'https://linkedin.com/birmehto' },
+  { icon: '\uD835\uDDD8', label: '@birmehto', href: 'https://twitter.com/birmehto' },
 ]

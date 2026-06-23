@@ -9,21 +9,23 @@ export function About() {
   return (
     <Section
       id="about"
-      label="01 / About"
+      label="#about"
       title="Building apps that people love to use."
     >
       <div className="about-grid" ref={gridRef}>
         <div className="about-text">
           <p className="reveal">
-            I&apos;m a developer with over 5 years of experience shipping production apps
-            across platforms. I specialize in crafting fluid interfaces,
-            managing complex state, and architecting maintainable codebases that scale.
+            I build Flutter apps that people actually use &mdash; workforce management
+            platforms, IoT monitoring tools, digital signage systems, and business
+            productivity suites. Every project ships with clean architecture,
+            thorough state management, and a UI that feels native on every screen.
           </p>
           <p className="reveal">
-            My toolkit spans modern frameworks and languages across the stack,
-            with a strong focus on UX that makes apps feel native on every platform.
-            When I&apos;m not coding, I write about development patterns
-            and contribute to open-source projects.
+            My stack runs on Flutter, Riverpod, Firebase, and whatever else the
+            problem demands. I focus on making complex flows feel simple and
+            keeping codebases maintainable as they grow. When I&apos;m not shipping
+            features, I&apos;m contributing to open-source packages and writing
+            about Flutter patterns.
           </p>
         </div>
         <div className="about-stats">

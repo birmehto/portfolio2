@@ -4,10 +4,6 @@ export function Hero() {
       <div className="hero-bg-accent" aria-hidden="true" />
       <div className="container">
         <div className="hero-content">
-          <div className="hero-greeting">
-            <span className="hero-greeting-dot" />
-            hello, I&apos;m
-          </div>
           <h1 className="hero-title">
             Bir <span className="highlight">Mehto</span>
           </h1>
@@ -19,8 +15,8 @@ export function Hero() {
             </span>
           </div>
           <p className="hero-sub">
-            I ship production-quality cross-platform apps with clean architecture
-            and pixel-perfect UIs. Currently building with Flutter, Riverpod, and Firebase.
+            2+ years shipping Flutter apps to production &mdash; from IoT dashboards
+            to digital signage platforms used by hundreds of businesses daily.
           </p>
           <div className="hero-actions">
             <a href="/projects" className="btn btn-primary">View Work</a>
@@ -28,11 +24,6 @@ export function Hero() {
             <a href="#" className="btn btn-outline-accent">Resume</a>
           </div>
         </div>
-      </div>
-
-      <div className="hero-indicator" aria-hidden="true">
-        <span>Scroll</span>
-        <div className="scroll-line"></div>
       </div>
     </section>
   )
